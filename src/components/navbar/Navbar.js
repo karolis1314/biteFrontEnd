@@ -12,6 +12,9 @@ const Navbar = () => {
                 <h1 style={{ marginLeft: '1rem', color: '#AFE1AF'}} >Bite</h1>
                 <ul className={click ? 'nav active' : 'nav'}>
                     <li className="nav-item">
+                        <a href="/bee">Home</a>
+                    </li>
+                    <li className="nav-item">
                         <a href="/">Service</a>
                     </li>
                     <li className="nav-item">
@@ -21,7 +24,7 @@ const Navbar = () => {
                         <a href="/">Customer</a>
                     </li>
                     <li className="nav-item">
-                        <a href="/">About</a>
+                        <a href="/about">About</a>
                     </li>
                     <li className="nav-item">
                         <a className='btn' href="/">Login</a>
