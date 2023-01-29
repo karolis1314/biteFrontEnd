@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import './Login.css';
-import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../../constants/apiConstants';
-import { withRouter } from  './withRouter';
+import {API_BASE_URL} from '../../constants/apiConstants';
+import { withRouter } from '../router/withRouter';
 
-function LoginForm(props) {
+function LoginForm() {
     const [state, setState] = useState({
         firstName: "",
         lastName: "",
@@ -35,32 +35,27 @@ function LoginForm(props) {
                 personalCode: state.personalCode,
             };
 
-            const res = await axios.post(API_BASE_URL + "/customer", payload);
+            axios.post(API_BASE_URL + "/customer", payload).then((res) => {
 
-            if (res.status === 200) {
-                setState((prevState) => ({
-                    ...prevState,
-                    successMessage: res.data,
-                }));
-                localStorage.setItem(ACCESS_TOKEN_NAME, true);
-                redirectToHome();
-                props.showError(null);
-            } else if (res.status === 204) {
-                props.showError(res.data.message);
-            } else {
-                props.showError(res.data.message);
-            }
-        } catch (error) {
-            console.log(error);
+                if (res.status === 201) {
+                    setState(prevState => ({
+                        ...prevState,
+                        'successMessage' : 'Customer created successfully, with id: ' + res.data.id
+                    }))
+                } else if (res.status === 204) {
+                    alert(res.data.message);
+                } else {
+                    alert(res.data.message);
+                }
+            });
+        }catch (error) {
+            alert(error);
         }
     };
 
-    const redirectToHome = () => {
-        props.updateTitle("Home");
-        props.history.push("/home");
-    };
     return(
         <div className="loginForm">
+            <h1 className="loginFormHeader">{state.successMessage}</h1>
             <form className="form">
                 <div className="loginFormComp">
                     <label htmlFor="firstName">First Name</label>
@@ -131,9 +126,6 @@ function LoginForm(props) {
                     onClick={handleSubmitClick}
                 >Submit</button>
             </form>
-            <div className="alert alert-success mt-2" style={{display: state.successMessage ? 'block' : 'none' }} role="alert">
-                {state.successMessage}
-            </div>
         </div>
     )
 }
