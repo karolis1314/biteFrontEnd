@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import axios from 'axios';
 import './Login.css';
 import {API_BASE_URL} from '../../constants/apiConstants';
 import { withRouter } from '../router/withRouter';
@@ -13,6 +12,7 @@ function LoginForm() {
         companiesCode: "",
         personalCode: "",
         successMessage: null,
+        errorMessage: null
     });
 
     const handleChange = (e) => {
@@ -25,31 +25,40 @@ function LoginForm() {
 
     const handleSubmitClick = async (e) => {
         e.preventDefault();
+
+        const payload = {
+            email: state.email,
+            firstName: state.firstName,
+            lastName: state.lastName,
+            companiesName: state.companiesCode,
+            companiesCode: state.companiesCode,
+            personalCode: state.personalCode,
+        };
+
         try {
-            const payload = {
-                email: state.email,
-                firstName: state.firstName,
-                lastName: state.lastName,
-                companiesName: state.companiesCode,
-                companiesCode: state.companiesCode,
-                personalCode: state.personalCode,
-            };
-
-            axios.post(API_BASE_URL + "/customer", payload).then((res) => {
-
-                if (res.status === 201) {
-                    setState(prevState => ({
-                        ...prevState,
-                        'successMessage' : 'Customer created successfully, with id: ' + res.data.id
-                    }))
-                } else if (res.status === 204) {
-                    alert(res.data.message);
-                } else {
-                    alert(res.data.message);
-                }
+            const response = await fetch(API_BASE_URL + "/customer", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
             });
-        }catch (error) {
-            alert(error);
+
+            if (response.ok) {
+                const data = await response.json();
+                setState(prevState => ({
+                    ...prevState,
+                    successMessage: 'Customer created successfully, with id: ' + data.id
+                }));
+            } else {
+                const data = await response.json();
+                setState(prevState => ({
+                    ...prevState,
+                    successMessage: data.message
+                }));
+            }
+        } catch (error) {
+            console.log("Error:", error);
         }
     };
 
