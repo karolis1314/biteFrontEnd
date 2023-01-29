@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
+import {Link, useMatch, useResolvedPath} from 'react-router-dom'
 import './Navbar.css'
 
 const Navbar = () => {
@@ -11,23 +12,13 @@ const Navbar = () => {
             <div className="container">
                 <h1 style={{ marginLeft: '1rem', color: '#AFE1AF'}} >Bite</h1>
                 <ul className={click ? 'nav active' : 'nav'}>
+                    <CustomLink to="/">Home</CustomLink>
+                    <CustomLink to="/service">Service</CustomLink>
+                    <CustomLink to="/account">Account</CustomLink>
+                    <CustomLink to="/customer">Customer</CustomLink>
+                    <CustomLink to="/about">About</CustomLink>
                     <li className="nav-item">
-                        <a href="/bee">Home</a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/">Service</a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/">Account</a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/">Customer</a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/about">About</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className='btn' href="/">Login</a>
+                        <Link className='btn' to="/login">Login</Link>
                     </li>
                 </ul>
                 <div onClick={handleClick} className="hamburger">
@@ -37,6 +28,17 @@ const Navbar = () => {
             </div>
         </div>
     )
+}
+
+function CustomLink({ to, children, ...props }) {
+    const resolvePath = useResolvedPath(to);
+    const isActive = useMatch({path : resolvePath.pathname, end : true});
+
+    return (
+        <li className={isActive ? "active" : ""}>
+            <Link to={to} {...props} >{children}</Link>
+        </li>
+    );
 }
 
 export default Navbar

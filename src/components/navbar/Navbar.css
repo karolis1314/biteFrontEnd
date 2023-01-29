@@ -36,6 +36,14 @@
     color: #000;
 }
 
+.nav li.active {
+    background-color: var(--primary-green);
+}
+
+.nav li:hover {
+    background-color: var(--primary-green);
+}
+
 @media screen and (max-width:940px) {
     .hamburger {
         display: block;

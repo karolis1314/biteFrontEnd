@@ -26,7 +26,6 @@ const About = () => {
                         <AboutCard icon={<FaInternetExplorer className='icon' />} heading='Nuolaidos bites interneto planams' text='Naujiena BITĖJE! 5G namų internetas Rinkitės greičiausią ir stabiliausią BITĖS namų internetą.' />
                     </div>
                 </div>
-                <a href="/" className="btn">Register/Login</a>
             </div>
         </div>
     )
