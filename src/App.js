@@ -7,6 +7,7 @@ import Navbar from "./components/navbar/Navbar";
 import Bee from "./components/bee/Bee";
 import About from "./components/about/About";
 import Login from "./components/login/Login";
+import Customer from "./components/customer/Customer";
 
 const App = () => {
     window.onbeforeunload = (event) => {
@@ -27,6 +28,7 @@ const App = () => {
                             <Route path="/home" element={<Bee/>} />
                             <Route path="/about" element={<About/>} />
                             <Route path="/login" element={<Login/>} />
+                            <Route path="/customer" element={<Customer/>} />
                         </Routes>
             </div>
         </Router>
