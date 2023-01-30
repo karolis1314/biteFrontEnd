@@ -13,7 +13,7 @@ const Navbar = () => {
                 <h1 style={{ marginLeft: '1rem', color: '#AFE1AF'}} >Bite</h1>
                 <ul className={click ? 'nav active' : 'nav'}>
                     <CustomLink to="/">Home</CustomLink>
-                    <CustomLink to="/service">Service</CustomLink>
+                    <CustomLink to="/msisdn">MSISDN</CustomLink>
                     <CustomLink to="/account">Account</CustomLink>
                     <CustomLink to="/customer">Customer</CustomLink>
                     <CustomLink to="/about">About</CustomLink>
