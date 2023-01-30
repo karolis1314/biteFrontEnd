@@ -1,71 +1,91 @@
 .customer-container {
     margin: 0 auto;
-    width: 80%;
+    max-width: 800px;
+    padding: 20px;
     text-align: center;
+}
+
+.success-message {
+    background-color: lightgreen;
+    border: 1px solid green;
+    border-radius: 5px;
+    color: green;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+h1 {
+    margin-bottom: 20px;
 }
 
 table {
+    margin: 0 auto;
+    width: 100%;
     border-collapse: collapse;
-    width: 100%;
-    margin: 0 auto;
 }
 
-th, td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-th {
-    background-color: #dddddd;
-    text-align: center;
-}
-
-td {
-    text-align: center;
-}
-
-button {
-    background-color: #4CAF50;
+thead tr {
+    background-color: #00bfff;
     color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
 }
 
-form {
+thead tr th {
+    border: 1px solid #00bfff;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+tbody tr {
+    background-color: #e6f7ff;
+}
+
+tbody tr td {
+    border: 1px solid #00bfff;
+    padding: 10px;
+    text-align: center;
+}
+
+.form-container {
+    background-color: #f2f2f2; /* light gray */
+    border-radius: 10px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-form label {
-    display: block;
-    margin-bottom: 10px;
-    text-align: left;
+    flex-direction: column;
+    padding: 40px;
     width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-form input {
-    padding: 5px;
-    font-size: 16px;
-    margin: 0 auto;
+.form-input {
+    border: 1px solid #ddd; /* light gray */
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 20px;
     width: 100%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-form button[type="submit"] {
-    background-color: #4CAF50;
+
+.button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #1890ff;
+    border: 1px solid #1890ff;
+    border-radius: 5px;
     color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
     cursor: pointer;
-    width: 100%;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #40a9ff;
+    border-color: #40a9ff;
 }
