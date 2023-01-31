@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from '../router/withRouter';
 import "./Customer.css";
+import { customerID } from '../../constants/apiConstants';
 
 const API_BASE_URL = "http://localhost:8080/api/v1/customer";
 
@@ -15,6 +16,7 @@ const Customer = () => {
         companiesCode: "",
         personalCode: "",
         successMessage: null,
+        selectedCustomerId: null
     });
 
     const handleEdit = (id, customer) => {
@@ -23,6 +25,13 @@ const Customer = () => {
             ...customer,
             successMessage: null
         });
+    };
+    const handleSelect = (id) => {
+        setState(prevState => ({
+            ...prevState,
+            selectedCustomerId: id,
+        }));
+        customerID = state.selectedCustomerId;
     };
 
 
@@ -161,6 +170,7 @@ const Customer = () => {
                                 <>
                                     <button className="button" onClick={() => handleEdit(customer.id, customer)}>Edit</button>
                                     <button className="button" onClick={() => handleDeleteCustomer(customer.id)}>Delete</button>
+                                    <button className="button" onClick={() => handleSelect(customer.id)}>Select</button>
                                 </>
                             ) : (
                                 <>
