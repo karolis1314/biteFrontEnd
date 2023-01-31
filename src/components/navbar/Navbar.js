@@ -17,6 +17,7 @@ const Navbar = () => {
                     <CustomLink to="/account">Account</CustomLink>
                     <CustomLink to="/customer">Customer</CustomLink>
                     <CustomLink to="/about">About</CustomLink>
+                    <CustomLink to="/order">Order</CustomLink>
                     <li className="nav-item">
                         <Link className='btn' to="/login">Login</Link>
                     </li>

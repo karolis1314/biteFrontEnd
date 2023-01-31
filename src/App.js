@@ -8,6 +8,9 @@ import Bee from "./components/bee/Bee";
 import About from "./components/about/About";
 import Login from "./components/login/Login";
 import Customer from "./components/customer/Customer";
+import Account from "./components/account/Account";
+import Msisdn from "./components/msisdn/Msisdn";
+import Order from "./components/order/Order";
 
 const App = () => {
     window.onbeforeunload = (event) => {
@@ -29,6 +32,9 @@ const App = () => {
                             <Route path="/about" element={<About/>} />
                             <Route path="/login" element={<Login/>} />
                             <Route path="/customer" element={<Customer/>} />
+                            <Route path="/account" element={<Account/>} />
+                            <Route path="/msisdn" element={<Msisdn/>} />
+                            <Route path="/order" element={<Order/>} />
                         </Routes>
             </div>
         </Router>

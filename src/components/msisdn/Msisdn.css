@@ -68,13 +68,13 @@ tbody tr td {
 }
 
 
-.button, .button-create{
+.button {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-.button, .button-create {
+.button {
     background-color: #1890ff;
     border: 1px solid #1890ff;
     border-radius: 5px;
@@ -89,3 +89,22 @@ tbody tr td {
     background-color: #40a9ff;
     border-color: #40a9ff;
 }
+
+.create {
+    width: 100%;
+    margin-top: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.create:hover {
+    background-color: #0069d9;
+}
+
+

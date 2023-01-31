@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from '../router/withRouter';
 import "./Customer.css";
-import { customerID } from '../../constants/apiConstants';
+
+export const customerID = {value:0};
 
 const API_BASE_URL = "http://localhost:8080/api/v1/customer";
 
@@ -31,8 +32,13 @@ const Customer = () => {
             ...prevState,
             selectedCustomerId: id,
         }));
-        customerID = state.selectedCustomerId;
+        setId(id);
     };
+
+    const setId = (id) => {
+        customerID.value = id;
+        alert("You have selected customer with id: " + customerID.value);
+    }
 
 
     const handleUpdateFormSubmit = (e) => {
